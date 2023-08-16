@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 # Información de la librería
-LIBRARY_NAME = 'devopslib'
+LIBRARY_NAME = 'devops'
 VERSION = '0.1'
 DESCRIPTION = 'Una librería genial para reutilizar y actualizar globalmente código'
 AUTHOR = 'Iván Tomasevich'
@@ -29,12 +29,8 @@ setup(
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
+        'Intended Audience :: Developers-DevOps',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
     ],
 )
