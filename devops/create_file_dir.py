@@ -8,32 +8,32 @@ import os
 
 def directory_create(mkdir):
     """
-    Esta función crea un directorio si no existe
-    :param mkdir: str del path completo
-    :return: mensaje si fue creado o ya existe
+    This function creates a directory if it does not exist.
+    :param mkdir: str Full path.
+    :return: message if it was created or already exists.
     """
     if not os.path.exists(mkdir):
         os.mkdir(mkdir)
-        print(f"Creando el directorio {mkdir}")
+        print(f"Creating dir '{mkdir}'")
     else:
-        print(f"El directorio {mkdir} ya existe")
+        print(f"The '{mkdir}' dir already exist")
     return mkdir
 
 
 def file_create(path, file, content):
     """
-    Esta función crea un archivo si no existe
-    :param path: path donde se va a crear el archivo
-    :param file: nombre del archivo y extensión a crear
-    :param content: contenido que se pretende escribir en el archivo
-    :return: mensaje si fue creado o no
+    Esta función crea un archivo si no existe.
+    :param path: Path where to create the file.
+    :param file: File name and extension to create.
+    :param content: Content that you intend to write to the file.
+    :return: message if it was created or already exists.
     """
     file_path = os.path.join(path, file)
     if not os.path.isfile(file_path):
         with open(file_path, "w") as f:
             f.write(content)
-        print(f"El archivo {file} fue creado")
+        print(f"The file '{file}' was created")
         return file
     else:
-        print(f"El directorio {file} ya existe")
+        print(f"The '{file}' file already exists")
         return file

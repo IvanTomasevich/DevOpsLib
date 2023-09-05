@@ -14,7 +14,7 @@ from get_env_vars import workspace, kb_path, env_path, build_id, deploy, deploy_
 
 # Guardo variables fecha y hora más la formateo
 now = datetime.datetime.now()
-fecha_hora = now.strftime("%d-%m-%Y %H-%M-%S")
+date_time = now.strftime("%d-%m-%Y %H-%M-%S")
 
 # Me fijo si existe el archivo DevOps.html, si no lo creo y lo escribo desde DevOps.html
 # Defino los argumentos
@@ -40,33 +40,33 @@ template = """<!-- Template desde DevOps AP -->
 file_create(workspace, html, template)
 
 # Copio el html para actualizar en él .zip
-shutil.copy(f'{workspace}\\DevOps.html',
-            f'{kb_path}\\{env_path}\\{deploy_path}')
+shutil.copy(f'{workspace}/DevOps.html',
+            f'{kb_path}/{env_path}/{deploy_path}')
 
 
-def add_tag_html(job, tiempo):
+def add_tag_html(job, job_time):
     """
-    Agrega los TAG del Job del Pipeline y la fecha y hora al archivo DevOps.html
-    :param job: str del número del build de Jenkins
-    :param tiempo: str de la fecha y hora en la que se ejecutó el build
-    :return: El archivo DevOps.html modificado con el Build y fecha y hora
+    Add the Pipeline Job TAGS and the date and time to the DevOps file.html
+    :param job: str of Jenkins build number
+    :param job_time: str of the date and time the build was run
+    :return: The DevOps file.html modified with the Build and date and time
     """
     # Lee el archivo HTML
     with open(html, "r") as f_DO:
         contenido = f_DO.read()
     # Reemplaza la palabra "TAG" por la variable de entorno "VARIABLE"
     contenido = contenido.replace("TAG", job)
-    contenido = contenido.replace("datetime", tiempo)
+    contenido = contenido.replace("datetime", job_time)
     # Guarda el archivo HTML actualizado
     with open(html, "w") as f_DO:
         f_DO.write(contenido)
 
 
 # Me muevo al path de trabajo y archivos a modificar
-os.chdir(f'{kb_path}\\{env_path}\\{deploy_path}')
+os.chdir(f'{kb_path}/{env_path}/{deploy_path}')
 
 # Llamo a la func. (subrutina) para pasarle el build id y la fecha y hora del build de Jenkins
-add_tag_html(build_id, fecha_hora)
+add_tag_html(build_id, date_time)
 
 # Actualizo .zip con html con el build id
 subprocess.run(["jar", "uf", deploy, html])
