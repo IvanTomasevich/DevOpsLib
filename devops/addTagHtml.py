@@ -2,15 +2,15 @@
 Script que se usa para probar el deploy, si se actualiza el DevOps.html
 es porque el deploy anda genial y el problema puede ser o el deployment unit
 o el archivo <deployment_unit>.gxdproj
-Dependencias: create_file_dir.py | get_env_vars.py
+Dependencias: createFileDir.py | getEnvVars.py
 """
 import datetime
 import os
 import shutil
 import subprocess
 
-from create_file_dir import file_create
-from get_env_vars import workspace, kb_path, env_path, build_id, deploy, deploy_path
+from createFileDir import file_create
+from getEnvVars import workspace, kb_path, env_path, build_id, deploy, deploy_path
 
 # Guardo variables fecha y hora más la formateo
 now = datetime.datetime.now()
@@ -20,7 +20,7 @@ date_time = now.strftime("%d-%m-%Y %H-%M-%S")
 # Defino los argumentos
 html = "DevOps.html"
 html_path = workspace
-template = """<!-- Template desde DevOps AP -->
+template = """<!-- Template desde DevOps -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

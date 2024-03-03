@@ -5,8 +5,8 @@ import datetime
 import os
 import shutil
 
-from get_env_vars import kb_path, env_path, workspace, build_id
-from create_file_dir import directory_create
+from getEnvVars import kb_path, env_path, workspace, build_id
+from createFileDir import directory_create
 
 # Guardo los nombres de las reorg .sql
 reorg = "ReorganizationScript.sql"
@@ -27,7 +27,7 @@ directory_create(path_fechas)
 # Me paro en el directorio donde están las Reorg
 os.chdir(working_dir)
 
-# Si existe el viejo lo borro por las dudas (una vez no lo piso)
+# Si existe el viejo lo elimino
 if os.path.exists(appr_reorg):
     os.remove(appr_reorg)
 # Copio el SQL con el Build y Fecha en sus path destino si existe
